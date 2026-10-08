@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New Order - Coffee Shop POS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-layout" id="appLayout">
+    <div class="main-content">
+      <h1 class="page-title">New Order</h1>
+
+      <div class="pos-layout">
+        <!-- Left: product selection -->
+        <div class="products-panel">
+          <div class="category-filters" id="categoryFilters">
+            <button class="active" data-category="All">All</button>
+            <button data-category="Coffee">Coffee</button>
+            <button data-category="Non-Coffee">Non-Coffee</button>
+            <button data-category="Tea">Tea</button>
+            <button data-category="Pastries">Pastries</button>
+            <button data-category="Snacks">Snacks</button>
+          </div>
+          <div class="product-grid" id="productGrid">
+            <p>Loading products...</p>
+          </div>
+        </div>
+
+        <!-- Right: cart + payment -->
+        <div class="cart-panel">
+          <h2>🛒 Current Order</h2>
+          <div class="cart-items" id="cartItems">
+            <div class="empty-cart-msg">Cart is empty. Click a product to add it.</div>
+          </div>
+          <div class="cart-total">
+            <span>Total</span>
+            <span id="cartTotal">₱0.00</span>
+          </div>
+
+          <!-- Payment: cashier types the cash received, change is calculated live -->
+          <div class="payment-box">
+            <label for="amountReceived">Amount Received</label>
+            <div class="peso-input">
+              <span>₱</span>
+              <input type="number" id="amountReceived" min="0" step="0.01" inputmode="decimal" placeholder="0.00" />
+            </div>
+            <div class="change-row">
+              <span>Change</span>
+              <span id="changeAmount">₱0.00</span>
+            </div>
+            <div class="payment-msg" id="paymentMsg"></div>
+          </div>
+
+          <button class="btn btn-success" id="completeOrderBtn" style="width:100%; padding:12px; font-size:15px;">
+            Complete Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Complete + Printable Receipt -->
+  <div class="modal-overlay" id="successModal" style="display:none;">
+    <div class="receipt-box">
+      <div class="success-check no-print">
+        <svg viewBox="0 0 52 52" width="60" height="60">
+          <circle cx="26" cy="26" r="25" fill="none" stroke="var(--green)" stroke-width="2" />
+          <path fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                d="M14 27l7 7 17-17" />
+        </svg>
+      </div>
+      <h2 class="no-print">Order Complete!</h2>
+
+      <!-- Only this block is printed -->
+      <div class="receipt" id="receipt">
+        <div class="rc-center rc-shop">COFFEE SHOP</div>
+        <div class="rc-center rc-sub">RECEIPT</div>
+        <div class="rc-line"></div>
+
+        <div class="rc-meta">
+          <div><span>Order #:</span><span id="rcOrderId"></span></div>
+          <div><span>Date:</span><span id="rcDate"></span></div>
+          <div><span>Time:</span><span id="rcTime"></span></div>
+          <div><span>Cashier:</span><span id="rcCashier"></span></div>
+        </div>
+        <div class="rc-line"></div>
+
+        <table class="rc-items">
+          <thead>
+            <tr><th>ITEM</th><th>QTY</th><th>PRICE</th><th>AMOUNT</th></tr>
+          </thead>
+          <tbody id="rcItems"></tbody>
+        </table>
+        <div class="rc-line"></div>
+
+        <div class="rc-totals">
+          <div class="rc-total-main"><span>TOTAL</span><span id="rcTotal"></span></div>
+          <div><span>CASH RECEIVED</span><span id="rcReceived"></span></div>
+          <div><span>CHANGE</span><span id="rcChange"></span></div>
+        </div>
+        <div class="rc-line"></div>
+
+        <div class="rc-center rc-thanks">Thank you for your order!</div>
+      </div>
+
+      <div class="receipt-actions no-print">
+        <button class="btn btn-secondary" id="printReceiptBtn">🖨 Print Receipt</button>
+        <button class="btn btn-success" id="newOrderBtn">Start New Order</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>

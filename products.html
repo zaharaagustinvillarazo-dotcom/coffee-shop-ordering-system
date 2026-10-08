@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Products - Coffee Shop POS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-layout" id="appLayout">
+    <div class="main-content">
+      <div class="toolbar">
+        <h1 class="page-title">Manage Products</h1>
+        <button class="btn btn-primary" onclick="openProductModal()">+ Add Product</button>
+      </div>
+
+      <div class="panel">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsBody">
+            <tr><td colspan="5">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit Product Modal -->
+  <div class="modal-overlay" id="productModal" style="display:none;">
+    <div class="modal-box">
+      <h3 id="modalTitle">Add Product</h3>
+      <form id="productForm">
+        <input type="hidden" id="productId" />
+
+        <label>Product Name</label>
+        <input type="text" id="productName" required />
+
+        <label>Category</label>
+        <select id="productCategory" required>
+          <option value="Coffee">Coffee</option>
+          <option value="Non-Coffee">Non-Coffee</option>
+          <option value="Tea">Tea</option>
+          <option value="Pastries">Pastries</option>
+          <option value="Snacks">Snacks</option>
+        </select>
+
+        <label>Price (₱)</label>
+        <input type="number" id="productPrice" step="0.01" min="0" required />
+
+        <label>Status</label>
+        <select id="productStatus">
+          <option value="available">Available</option>
+          <option value="unavailable">Unavailable</option>
+        </select>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

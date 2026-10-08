@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sales Records - Coffee Shop POS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-layout" id="appLayout">
+    <div class="main-content">
+      <h1 class="page-title">Sales Records</h1>
+
+      <div class="filter-bar">
+        <label for="dateFilter">Check a specific date:</label>
+        <input type="date" id="dateFilter" />
+        <button class="btn btn-primary btn-sm" onclick="loadSalesForDate()">Search</button>
+      </div>
+
+      <div class="cards-row">
+        <div class="stat-card">
+          <div class="label" id="salesLabel">Total Sales</div>
+          <div class="value" id="dateTotalSales">₱0.00</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Refunds</div>
+          <div class="value" id="dateTotalRefunds">₱0.00</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Net Sales</div>
+          <div class="value" id="dateNetSales">₱0.00</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Total Orders</div>
+          <div class="value" id="dateTotalOrders">0</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 id="ordersTitle">Orders for Selected Date</h2>
+        <div style="overflow-x:auto;">
+        <p class="hint-text">Click a row to see the full order and request a refund.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Order #</th>
+              <th>Cashier</th>
+              <th>Total</th>
+              <th>Amount Received</th>
+              <th>Change</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="dateOrdersBody">
+            <tr><td colspan="8">Pick a date above and click Search.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Daily Sales History</h2>
+        <p class="hint-text">Click a date to see that day's individual orders.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Total Orders</th>
+              <th>Total Sales</th>
+              <th>Refunds</th>
+              <th>Net Sales</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody">
+            <tr><td colspan="5">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/refunds.js"></script>
+  <script src="js/sales.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Refunds - Coffee Shop POS</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-layout" id="appLayout">
+    <div class="main-content">
+      <h1 class="page-title">Refunds</h1>
+      <p class="hint-text">Look up an order by its number to view it or request a refund.</p>
+
+
+
+      <div class="panel" style="margin-top:24px;">
+        <h2>Refund Records</h2>
+        <p class="hint-text">Click a record to see its full details.</p>
+
+        <div class="filter-bar" style="flex-wrap:wrap;">
+          <input type="text" id="refundSearchText" placeholder="Search order #, cashier, or admin" style="flex:1; min-width:180px; padding:8px; border:1px solid var(--cream-dark); border-radius:6px;" />
+
+          <input type="date" id="refundDateFilter" />
+          <button class="btn btn-secondary btn-sm" id="clearRefundFiltersBtn">Clear</button>
+        </div>
+
+        <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Order #</th>
+              <th>Requested By</th>
+              <th>Approved By</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="refundRecordsBody">
+            <tr><td colspan="6">Loading...</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/refunds.js"></script>
+  <script src="js/refund-lookup.js"></script>
+</body>
+</html>

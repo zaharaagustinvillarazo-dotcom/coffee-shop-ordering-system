@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coffee Shop POS</title>
+</head>
+<body>
+  <script>
+    // This page has no content of its own - it just sends
+    // people to the right place: the login page, or straight
+    // into the app if they're already logged in.
+    fetch('/api/auth/session', { credentials: 'include' })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.loggedIn) {
+          window.location.href = data.user.role === 'admin' ? 'dashboard.html' : 'orders.html';
+        } else {
+          window.location.href = 'login.html';
+        }
+      })
+      .catch(() => { window.location.href = 'login.html'; });
+  </script>
+</body>
+</html>
